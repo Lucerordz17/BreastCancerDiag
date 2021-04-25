@@ -8,12 +8,12 @@ pip -q install opencv-python
 pip -q install pillow # optional
 pip -q install pandas
 
-mkdir /root/.kaggle
-echo '{"username":"lucerorodriguez","key":"f9960528042fead1f6039c3a876df225"}' > /root/.kaggle/kaggle.json
+# mkdir /root/.kaggle
+# echo '{"username":"lucerorodriguez","key":"f9960528042fead1f6039c3a876df225"}' > /root/.kaggle/kaggle.json
 
 mkdir data
 mkdir data/train
 mkdir data/test
 mkdir /content/logs
 
-python3 BreastCancerDiag/dataset_prep/data.py
+python3 BreastCancerDiag/dataset_prep/importData.py

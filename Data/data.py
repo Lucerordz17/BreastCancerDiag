@@ -15,14 +15,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-## Go to Dropbox
-DropboxPath = '/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142'
-os.chdir(DropboxPath)
-metadata = pd.read_csv('metadata.csv')
-Calc_Test = pd.read_csv('calc_case_description_test_set.csv')
-Mass_Test = pd.read_csv('mass_case_description_test_set.csv')
-Calc_Train = pd.read_csv('calc_case_description_train_set.csv')
-Mass_Train = pd.read_csv('mass_case_description_train_set.csv')
+# ## Go to Dropbox
+# DropboxPath = '/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142'
+# os.chdir(DropboxPath)
+metadata = pd.read_csv('/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142/metadata.csv')
+Calc_Test = pd.read_csv('/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142/calc_case_description_test_set.csv')
+Mass_Test = pd.read_csv('/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142/mass_case_description_test_set.csv')
+Calc_Train = pd.read_csv('/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142/calc_case_description_train_set.csv')
+Mass_Train = pd.read_csv('/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/manifest-ZkhPvrLo5216730872708713142/mass_case_description_train_set.csv')
 
 
 ### Patients IDs
@@ -40,8 +40,10 @@ images_path = np.asarray(images_path)
 PNG = True
 
 # Specify the output jpg/png folder path
-test_path = "/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/test"
-train_path = "/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/train"
+savepath = 'data'
+
+# test_path = "/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/test"
+# train_path = "/Users/lucerorodriguez/Dropbox (ASU)/Breast Cancer Data/train"
 
 train = []
 test = []
@@ -71,7 +73,7 @@ for n in range(6775):
             else:
                 key = Calc_Test['pathology'][index]
             test.append([Calc_Test['patient_id'][index], IDs[n], key])
-            cv2.imwrite(os.path.join(test_path, image), pixel_array_numpy)
+            cv2.imwrite(os.path.join(savepath, 'test', image), pixel_array_numpy)
     elif IDs[n].find('Mass-Test') == 0:
         Find = Mass_Test['ROI mask file path'].str.find(IDs[n])
         if 0 in Find:
@@ -81,7 +83,7 @@ for n in range(6775):
             else:
                 key = Mass_Test['pathology'][index]
             test.append([Mass_Test['patient_id'][index], IDs[n], key])
-            cv2.imwrite(os.path.join(test_path, image), pixel_array_numpy)
+            cv2.imwrite(os.path.join(savepath, 'test', image), pixel_array_numpy)
     ## then go to train
     elif IDs[n].find('Calc-Train') == 0:
         Find = Calc_Train['ROI mask file path'].str.find(IDs[n])
@@ -92,7 +94,7 @@ for n in range(6775):
             else:
                 key = Calc_Train['pathology'][index]
             train.append([Calc_Train['patient_id'][index], IDs[n], key])
-            cv2.imwrite(os.path.join(train_path, image), pixel_array_numpy)
+            cv2.imwrite(os.path.join(savepath, 'train', image), pixel_array_numpy)
     else:
         Find = Mass_Train['ROI mask file path'].str.find(IDs[n])
         if 0 in Find:
@@ -102,7 +104,7 @@ for n in range(6775):
             else:
                 key = Mass_Train['pathology'][index]
             train.append([Mass_Train['patient_id'][index], IDs[n], key])
-            cv2.imwrite(os.path.join(train_path, image), pixel_array_numpy)
+            cv2.imwrite(os.path.join(savepath, 'train', image), pixel_array_numpy)
     if n % 50 == 0:
         print('{} image converted'.format(n))
 

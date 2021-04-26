@@ -24,12 +24,12 @@ for image in enumerate(path2):
 
 f1 = open(GooglePath+"test_split_v3.txt", "r")
 contents1 = f1.open()
-test_file = open("test_split_v3.txt",'w')
+test_file = read("test_split_v3.txt",'w')
 test_file.write(contents1)
 test_file.close()
 
 f2 = open(GooglePath+"train_split_v3.txt", "r")
 contents2 = f2.open()
-train_file = open("train_split_v3.txt", 'w')
+train_file = read("train_split_v3.txt", 'w')
 train_file.write(contents2)
 train_file.close()

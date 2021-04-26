@@ -1,7 +1,6 @@
 import os
 import cv2
 #import PIL # optional
-import os
 import csv
 import pandas as pd
 import numpy as np
@@ -12,11 +11,14 @@ GooglePath = "/content/gdrive/MyDrive/Breast Cancer Data"
 savepath = 'data'
 images_path1 = "/content/gdrive/MyDrive/Breast Cancer Data/train"
 images_path2 = "/content/gdrive/MyDrive/Breast Cancer Data/test"
-for image in enumerate(images_path1):
+
+path1 = os.listdir(images_path1)
+for image in enumerate(path1):
     image_cv2 = cv2.imread(os.path.join(images_path1, image))
     cv2.imwrite(os.path.join(savepath, 'train', image), image_cv2)
 
-for image in enumerate(images_path2):
+path2 = os.listdir(images_path2)
+for image in enumerate(path2):
     image_cv2 = cv2.imread(os.path.join(images_path2, image))
     cv2.imwrite(os.path.join(savepath, 'test', image), image_cv2)
 

@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-GooglePath = "/content/gdrive/MyDrive/Breast Cancer Data"
+GooglePath = "/content/gdrive/MyDrive/Breast Cancer Data/"
 savepath = '/content/data'
 images_path1 = "/content/gdrive/MyDrive/Breast Cancer Data/train"
 images_path2 = "/content/gdrive/MyDrive/Breast Cancer Data/test"

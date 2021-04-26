@@ -15,12 +15,12 @@ images_path2 = "/content/gdrive/MyDrive/Breast Cancer Data/test"
 path1 = os.listdir(images_path1)
 for image in enumerate(path1):
     image_cv2 = Image.open(os.path.join(images_path1, image[1]))
-    cv2.save(os.path.join(savepath, 'train', image))
+    image_cv2.save(os.path.join(savepath, 'train', image))
 
 path2 = os.listdir(images_path2)
 for image in enumerate(path2):
     image_cv2 = Image.open(os.path.join(images_path2, image[1]))
-    cv2.save(os.path.join(savepath, 'test', image))
+    image_cv2.save(os.path.join(savepath, 'test', image))
 
 f1 = open(GooglePath+"test_split_v3.txt", "r")
 contents1 = f1.read()
